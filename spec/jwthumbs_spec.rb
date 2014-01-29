@@ -23,21 +23,53 @@ describe "movie" do
 	end 
 
 	describe "check for outdir " do
-			subject(:movie) { Jwthumbs::Movie.new("fixtures/iki_dakka.mp4", use_unique_outdir: true) }
-			its(:outdir) { should == "thumbs_#{Time.now.to_i.to_s}"}
+			subject(:movie) { Jwthumbs::Movie.new("fixtures/iki_dakka.mp4") }
+			its(:outdir) { should == "output/thumbs_#{Time.now.to_i.to_s}"}
 	end
 
 end
 
-describe "shutter" do
+describe "File progresses" do
 
-	describe "options" do
+		before(:all) do
+			@movie = Jwthumbs::Movie.new("fixtures/iki_dakka.mp4")	
+		end
+
+			let!(:outdir) { @movie.outdir}
+			subject!(:shutter) { @movie.create_thumbs }
+			
+
+	describe "Shutter" do
 		
-		# let!(:movie) { Jwthumbs::Movie.new("fixtures/iki_dakka.mpg", use_unique_outdir: true) }	
-		# let!(:shutter) { movie.stub(:create_thumbs) }
-		# subject { shutter }
+		describe "should have same options with @movie" do
+			its(:options) { should == @movie.options}
+		end
 
-		# its(:options) { should == movie.options}
+		describe "should create output dir" do
+			it { expect(File.directory?("output")).to eq true}
+		end
+
+		describe "should create outdir" do
+			it { expect(File.directory?(outdir)).to eq true}
+		end
+
+		describe "should create thumbs" do
+			it { expect(Dir[outdir].empty?).to eq false}
+		end
+
+		describe "should create sprite image" do
+			it { expect(File.exists?("#{outdir}/iki_dakka_sprite.jpg")).to eq true}
+		end
+
+		describe "should have sprite" do
+			its(:sprite)  {should be == "#{outdir}/iki_dakka_sprite.jpg" } 
+		end
+		
+		
+	end
+
+	describe "VTT progresses" do
+		
 	end
 	
 end

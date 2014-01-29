@@ -17,7 +17,7 @@ module Jwthumbs
 			@skip_first = options[:skip_first] ||= true
 			@sprite_name = options[:sprite_name] ||= "sprite.jpg"
 			@vttfile_name = options[:vttfile_name] ||= "thumbs.vtt"
-			@outdir = options[:thumb_outdir] ||= "thumbs_#{Time.now.to_i.to_s}"
+			@outdir = options[:thumb_outdir] ||= "output/thumbs_#{Time.now.to_i.to_s}"
 			@timesync_adjust = options[:timesync_adjust] ||= 0.5
 			@spritefile = File.basename(@file_path, File.extname(@file_path))+"_"+@sprite_name
 			@vttfile = File.basename(@file_path, File.extname(@file_path))+"_"+@vttfile_name

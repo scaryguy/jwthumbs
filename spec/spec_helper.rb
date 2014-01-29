@@ -14,4 +14,8 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  config.after do
+	  FileUtils.rm_rf(Dir["output"])
+end
 end
