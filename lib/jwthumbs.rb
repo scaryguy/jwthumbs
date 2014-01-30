@@ -1,5 +1,6 @@
 require "jwthumbs/version"
 require 'movie'
+require 'vtt'
 require 'shutter'
 require 'logger'
 
@@ -8,9 +9,6 @@ module Jwthumbs
 		    @logger = log
 		end
 
-		  # Get FFMPEG logger.
-		  #
-		  # @return [Logger]
 		def self.logger
 		    return @logger if @logger
 		    logger = Logger.new(STDOUT)

@@ -14,12 +14,12 @@ describe "movie" do
 
 	describe "spritefile name" do
 		subject(:movie) { Jwthumbs::Movie.new("fixtures/iki_dakka.mp4") }
-		its(:spritefile) { should == "iki_dakka_sprite.jpg"}
+		its(:spritefile) { should == movie.spritefile}
 	end 
 
 	describe "vttfile name" do
 		subject(:movie) { Jwthumbs::Movie.new("fixtures/iki_dakka.mp4") }
-		its(:vttfile) { should == "iki_dakka_thumbs.vtt"}
+		its(:vttfile) { should == movie.vttfile}
 	end 
 
 	describe "check for outdir " do
@@ -41,10 +41,6 @@ describe "File progresses" do
 
 	describe "Shutter" do
 		
-		describe "should have same options with @movie" do
-			its(:options) { should == @movie.options}
-		end
-
 		describe "should create output dir" do
 			it { expect(File.directory?("output")).to eq true}
 		end
@@ -58,18 +54,23 @@ describe "File progresses" do
 		end
 
 		describe "should create sprite image" do
-			it { expect(File.exists?("#{outdir}/iki_dakka_sprite.jpg")).to eq true}
+			it { expect(File.exists?("#{outdir}/#{@movie.spritefile}")).to eq true}
 		end
 
 		describe "should have sprite" do
-			its(:sprite)  {should be == "#{outdir}/iki_dakka_sprite.jpg" } 
+			its(:sprite)  {should be == "#{outdir}/#{@movie.spritefile}" } 
 		end
 		
 		
 	end
 
 	describe "VTT progresses" do
-		
-	end
+
+		describe "should create vtt file" do
+			it { expect(File.file?("#{outdir}/#{@movie.spritefile}")).to eq true}
+		end
 	
 end
+	
+end
+

@@ -1,32 +1,27 @@
 module Jwthumbs
 	class Shutter
 		attr_accessor :sprite
-		def initialize(movie, options)
+		def initialize(movie)
 			@movie = movie
-			@options = options
-			@outdir = options[:outdir]
-			@thumb_rate_seconds = options[:thumb_rate_seconds]
-			@skip_first = options[:skip_first]
-			@thumb_width = options[:thumb_width]
-			@spritefile = options[:spritefile]
+			@sprite = movie.spritefile
 			run
-		end
-
-		def options
-			@options
 		end
 
 
 		def images
-			images = []
-			Dir.glob("#{@outdir}/*.jpg") do |image|
-				images.push(image)
+			my_images = []
+			Dir.glob("#{@movie.outdir}/*.jpg") do |image|
+				if image.include?("thumbnail001") 
+					File.delete(image) 
+				else
+					my_images.push(image)
+				end
 			end
-			images
+			@images = my_images
 		end
 
 		def sprite
-			@outdir+"/"+@spritefile
+			@movie.outdir+"/"+@movie.spritefile
 		end
 
 
@@ -35,9 +30,17 @@ module Jwthumbs
 		def run
 			take_snaps
 			process_images(images)
-			coords = get_geometry(images.first)
-			gridsize = Math.sqrt(images.length).ceil.to_i
-			return create_sprite(@outdir, @spritefile, coords, gridsize)
+			coords = get_geometry(@images.first)
+			gridsize = Math.sqrt(@images.length).ceil
+			gridsize = gridsize <= 0 ? 1 : gridsize
+			Jwthumbs.logger.info("@@@@@@@@@@@@@@@@ #{gridsize}")
+			create_sprite(@movie.outdir, @movie.spritefile, coords, gridsize)
+			create_vtt(@movie, @movie.spritefile, @images.length, coords, gridsize)
+		end
+
+		def create_vtt(movie, spritefile, images_count, coords, gridsize)
+			#def makevtt(spritefile,numsegments,coords,gridsize,writefile,thumbRate=None)
+			Vtt.new(movie, spritefile, images_count, coords, gridsize)
 		end
 
 		def create_sprite(outdir, spritefile, coords, gridsize)
@@ -49,15 +52,16 @@ module Jwthumbs
 
 
 		def take_snaps
-			rate = "1/#{@thumb_rate_seconds}"
-			`mkdir -p #{@outdir}`
-			cmd = "ffmpeg -i #{@movie.file_path} -f image2 -bt 20M -vf fps=#{rate} -aspect 16:9 #{@outdir+"/thumbnail%03d.jpg"}"
+			rate = "1/#{@movie.thumb_rate_seconds}"
+			`mkdir -p #{@movie.outdir}`
+			cmd = "ffmpeg -i #{@movie.file_path} -f image2 -bt 20M -vf fps=#{rate} -aspect 16:9 #{@movie.outdir+"/thumbnail%03d.jpg"}"
+			Jwthumbs.logger.info(cmd)
 			Jwthumbs.logger.info(system(cmd))
 		end
 
 
 		def process_images(images)
-			command ="mogrify -geometry #{@thumb_width}x #{images.join(" ")}"
+			command ="mogrify -geometry #{@movie.thumb_width}x #{images.join(" ")}"
 			Jwthumbs.logger.info(system(command))
 		end
 

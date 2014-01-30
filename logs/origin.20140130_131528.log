@@ -1,0 +1,65 @@
+Making dir: /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt
+START [2014-01-30 13:15:28.569189] : ffmpeg -i fixtures/iki_dakka.mp4 -f image2 -bt 20M -vf fps=1/45 -aspect 16:9 /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv%03d.jpg 
+END   [2014-01-30 13:15:29.366560]
+ffmpeg version 1.2 Copyright (c) 2000-2013 the FFmpeg developers
+  built on Mar 25 2013 18:12:13 with Apple clang version 4.0 (tags/Apple/clang-421.0.60) (based on LLVM 3.1svn)
+  configuration: --prefix=/usr/local/Cellar/ffmpeg/1.2 --enable-shared --enable-pthreads --enable-gpl --enable-version3 --enable-nonfree --enable-hardcoded-tables --enable-avresample --cc=cc --host-cflags= --host-ldflags= --enable-libx264 --enable-libfaac --enable-libmp3lame --enable-libxvid
+  libavutil      52. 18.100 / 52. 18.100
+  libavcodec     54. 92.100 / 54. 92.100
+  libavformat    54. 63.104 / 54. 63.104
+  libavdevice    54.  3.103 / 54.  3.103
+  libavfilter     3. 42.103 /  3. 42.103
+  libswscale      2.  2.100 /  2.  2.100
+  libswresample   0. 17.102 /  0. 17.102
+  libpostproc    52.  2.100 / 52.  2.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'fixtures/iki_dakka.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf54.63.104
+  Duration: 00:02:00.04, start: 0.000000, bitrate: 555 kb/s
+    Stream #0:0(eng): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p, 480x270 [SAR 1:1 DAR 16:9], 423 kb/s, 25 fps, 25 tbr, 12800 tbn, 50 tbc
+    Metadata:
+      handler_name    : VideoHandler
+    Stream #0:1(eng): Audio: aac (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 127 kb/s
+    Metadata:
+      handler_name    : SoundHandler
+Output #0, image2, to '/Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv%03d.jpg':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf54.63.104
+    Stream #0:0(eng): Video: mjpeg, yuvj420p, 480x270 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 90k tbn, 0.02 tbc
+    Metadata:
+      handler_name    : VideoHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 -> mjpeg)
+Press [q] to stop, [?] for help
+frame=    2 fps=0.0 q=0.0 size=N/A time=00:00:45.00 bitrate=N/A    frame=    4 fps=0.0 q=0.0 Lsize=N/A time=00:03:00.00 bitrate=N/A    
+video:71kB audio:0kB subtitle:0 global headers:0kB muxing overhead -100.030210%
+
+Removing first image, unneeded
+3 thumbs written in /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt
+START [2014-01-30 13:15:29.367549] : sips --resampleWidth 100 /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv002.jpg /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv003.jpg /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv004.jpg 
+END   [2014-01-30 13:15:29.386639]
+<CGColor 0x7fa070c10060> [<CGColorSpace 0x7fa070c0eca0> (kCGColorSpaceDeviceRGB)] ( 0 0 0 1 )
+<CGColor 0x7fa070c159c0> [<CGColorSpace 0x7fa070c0eca0> (kCGColorSpaceDeviceRGB)] ( 0 0 0 1 )
+<CGColor 0x7fa070f014b0> [<CGColorSpace 0x7fa070c0eca0> (kCGColorSpaceDeviceRGB)] ( 0 0 0 1 )
+/Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv002.jpg
+  /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv002.jpg
+/Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv003.jpg
+  /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv003.jpg
+/Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv004.jpg
+  /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv004.jpg
+
+START [2014-01-30 13:15:29.386955] : identify -format "%g - %f
+" /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv002.jpg 
+END   [2014-01-30 13:15:29.393838]
+100x56+0+0 - tv002.jpg
+
+START [2014-01-30 13:15:29.394285] : montage /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/tv*.jpg -tile 2x2 -geometry 100x56+0+0 /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/iki_dakka_sprite.jpg 
+END   [2014-01-30 13:15:29.407703]
+
+Wrote: /Users/scaryguy/gems/jwthumbs/thumbs/iki_dakka_vtt/iki_dakka_thumbs.vtt
