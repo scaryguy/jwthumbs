@@ -36,7 +36,7 @@ describe "File progresses" do
 		end
 
 			let!(:outdir) { @movie.outdir}
-			subject!(:shutter) { @movie.create_thumbs }
+			subject!(:shutter) { @movie.create_thumbs! }
 			
 
 	describe "Shutter" do

@@ -26,7 +26,7 @@ module Jwthumbs
 		end
 
 
-		def create_thumbs
+		def create_thumbs!
 			Shutter.new(self)
 		end
 
