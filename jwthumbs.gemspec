@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Jwthumbs::VERSION
   spec.authors       = ["scary.mac"]
   spec.email         = ["soner2@gmail.com"]
-  spec.description   = %q{A Ruby wrapper for creating a sprite of thumbnails and a .VTT file to use with JWPlayer}
+  spec.description   = %q{A Ruby gem for creating a sprite of thumbnails and a .VTT file to use with JWPlayer and all other HTML5 video players.}
   spec.summary       = %q{Create thumb sprites with a .VTT file}
   spec.homepage      = "http://github.com/scaryguy/jwthumbs"
   spec.license       = "MIT"

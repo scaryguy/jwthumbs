@@ -1,6 +1,8 @@
 # JWthumbs
 
-JWthumbs is a Ruby gem to create a .VTT file and a sprite of thumbnails of a given video file (mp4, mpg, avi, mov and so on...). Heavily inspired by [vlanard](https://github.com/vlanard)'s great [Python script](https://github.com/vlanard/videoscripts).
+Want to add tooltip thumbnails to your JWPlayer or another HTML5 video player? You're welcome!
+
+JWthumbs is a Ruby gem to create a .VTT file and a sprite of thumbnails of a given video file (mp4, mpg, avi, mov and so on...). You can't create timeline thumnails easier than this. Heavily inspired by [vlanard](https://github.com/vlanard)'s great [Python script](https://github.com/vlanard/videoscripts).
 
 ## System requirements
 
@@ -52,6 +54,10 @@ movie.create_thumbs!
 
 
 If you haven't changed defaults, your `_sprite.jpg` and `_thumbs.vtt` file will be exportes to `output` directory of your root path.
+
+"What will I do now?"
+
+If you're using JWPlayer, there is a cool tutorial on their web site, see [Adding Tooltip Thumbnails](http://www.longtailvideo.com/support/jw-player/31778/adding-tooltip-thumbnails/)
 
 
 ## Configuration
