@@ -1,7 +1,7 @@
 require 'jwthumbs'
 require 'spec_helper.rb'
 
-describe "movie" do
+describe "Initialization" do
 	
 	describe "Check for file_path arguement" do
 		subject(:movie) { Jwthumbs::Movie.new("fixtures/iki_dakka.mp4") }
@@ -57,10 +57,6 @@ describe "File progresses" do
 			it { expect(File.exists?("#{outdir}/#{@movie.spritefile}")).to eq true}
 		end
 
-		describe "should have sprite" do
-			its(:sprite)  {should be == "#{outdir}/#{@movie.spritefile}" } 
-		end
-		
 		
 	end
 
