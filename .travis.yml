@@ -1,4 +1,4 @@
-before_script: "sh ffmpeg.sh"
+before_script: "sudo sh ffmpeg.sh"
 language: ruby
 rvm:
   - "1.9.3"
