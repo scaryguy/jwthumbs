@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/scaryguy/jwthumbs.png?branch=master)](https://travis-ci.org/scaryguy/jwthumbs)
+
 # JWthumbs
 
 Want to add tooltip thumbnails to your JWPlayer? You're welcome!
