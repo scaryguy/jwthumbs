@@ -36,16 +36,12 @@ module Jwthumbs
 				 	f.write(vtt.join("\n")) 
 		  
 			end
-			delete_vtt(vtt_path) if @movie.galeri_on
+		 
 		end
 
 
 		protected
-		def delete_vtt(vtt_path)
-
-			File.delete(vtt_path)
-		end
-
+	 
 		def clear_files
 			Dir.glob("#{@movie.outdir}/thumbnail*.jpg") do |image|
 				
