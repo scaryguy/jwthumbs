@@ -39,8 +39,11 @@ module Jwthumbs
 			grid = "#{gridsize}x#{gridsize}"
     		cmd = "montage #{outdir}/thumbnail*.jpg -tile #{grid} -geometry #{coords} #{outdir}/#{spritefile}"
 			Jwthumbs.logger.info(system(cmd))
+			delete_sprite(@sprite) if @movie.galeri_on
 		end
-
+		def delete_sprite(sprite)
+			File.delete(sprite)
+		end
 
 		def take_snaps
 			rate = "1/#{@movie.seconds_between}"
