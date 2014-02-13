@@ -76,6 +76,8 @@ If you're using JWPlayer, there is a cool tutorial on their web site, see [Addin
 
 `:clear_files` (true / false): Thumbnails should be deleted or not? Before creating sprite, number of snapshots will be taken from the video in respect of `:seconds_between` parameter. Sprite is created by `montage`ing those thumbnails into one file. So you may need to use thumbnails or you may not. Your choice. Default is `true`.
 
+`:gallery_mode_on` (true / false): You can use JwThumbs to create snapshot galleries. When this option is `true`, snapshots of the video will be created but .VTT file and image sprite will be skipped. Default value is `false`.
+
 
 ## Contributing
 
