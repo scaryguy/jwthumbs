@@ -27,8 +27,8 @@ module Jwthumbs
 			coords = get_geometry(@images.first)
 			gridsize = Math.sqrt(@images.length).ceil.to_i
 			gridsize = gridsize <= 0 ? 1 : gridsize
-			create_sprite(@movie.outdir, @movie.spritefile, coords, gridsize)
-			create_vtt(@movie, @movie.spritefile, @images.length, coords, gridsize)
+			create_sprite(@movie.outdir, @movie.spritefile, coords, gridsize) if !@movie.gallery_mode_on
+			create_vtt(@movie, @movie.spritefile, @images.length, coords, gridsize) if !@movie.gallery_mode_on
 		end
 
 		def create_vtt(movie, spritefile, images_count, coords, gridsize)
@@ -39,8 +39,9 @@ module Jwthumbs
 			grid = "#{gridsize}x#{gridsize}"
     		cmd = "montage #{outdir}/thumbnail*.jpg -tile #{grid} -geometry #{coords} #{outdir}/#{spritefile}"
 			Jwthumbs.logger.info(system(cmd))
+		 
 		end
-
+	 
 
 		def take_snaps
 			rate = "1/#{@movie.seconds_between}"

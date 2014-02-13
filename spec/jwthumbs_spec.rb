@@ -63,7 +63,7 @@ describe "File progresses" do
 	describe "VTT progresses" do
 
 		describe "should create vtt file" do
-			it { expect(File.file?("#{outdir}/#{@movie.spritefile}")).to eq true}
+			it { expect(File.file?("#{outdir}/#{@movie.vttfile}")).to eq true}
 		end
 	
 end

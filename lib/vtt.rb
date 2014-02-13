@@ -5,6 +5,7 @@ module Jwthumbs
 			@movie = movie
 			create(movie, spritefile, images_count, coords, gridsize)
 			clear_files if @movie.clear_files
+
 		end
 
 		def create(movie, spritefile, images_count, coords, gridsize)
@@ -29,16 +30,18 @@ module Jwthumbs
 				clipstart = clipend
 				clipend = clipend + thumb_rate
 			end
-
-			vtt_path = movie.outdir+"/"+movie.vttfile
-			File.open(vtt_path, 'w+') do |f|
-			 	f.write(vtt.join("\n")) 
+			 
+				vtt_path = movie.outdir+"/"+movie.vttfile
+				File.open(vtt_path, 'w+') do |f|
+				 	f.write(vtt.join("\n")) 
+		  
 			end
-
+		 
 		end
 
-		protected
 
+		protected
+	 
 		def clear_files
 			Dir.glob("#{@movie.outdir}/thumbnail*.jpg") do |image|
 				
