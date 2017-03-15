@@ -4,7 +4,7 @@ module Jwthumbs
   class Movie
 
     attr_reader :file_path, :duration
-    attr_accessor :outdir, :seconds_between, :thumb_width, :vttfile, :spritefile, :clear_files, :gallery_mode_on
+    attr_accessor :outdir, :seconds_between, :thumb_width, :vttfile, :spritefile, :clear_files, :gallery_mode_on, :file_server
     
     def initialize(file_path=nil, options={})
       raise Errno::ENOENT, "the file '#{file_path}' does not exist" unless File.exists?(file_path)
@@ -22,6 +22,8 @@ module Jwthumbs
       @vttfile_name = options[:vttfile_name] ||= "thumbs.vtt"
       @outdir = options[:thumb_outdir] ||= "output/thumbs_#{Time.now.to_i.to_s}"
       @vttfile = File.basename(@file_path, File.extname(@file_path))+"_"+@vttfile_name  
+      @file_server = options[:file_server] || ''
+      @file_server = @file_server + "/" unless @file_server[-1] == '/'
       @gallery_mode_on = options[:gallery_mode_on] ||= false
     end
 

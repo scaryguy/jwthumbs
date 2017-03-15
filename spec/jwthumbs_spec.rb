@@ -32,7 +32,7 @@ end
 describe "File progresses" do
 
   before(:all) do
-    @movie = Jwthumbs::Movie.new("fixtures/iki_dakka.mp4")   
+    @movie = Jwthumbs::Movie.new("fixtures/iki_dakka.mp4", {:file_server => "https://amazon.s3.com/sdsadgasg/"}) 
   end
 
   let!(:outdir) { @movie.outdir}

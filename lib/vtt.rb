@@ -13,6 +13,7 @@ module Jwthumbs
       w,h = whxy.first.split("x").map {|i| i.to_i}
       _x,_y = whxy.last.split("+").map {|i| i.to_i}
       thumb_rate = movie.seconds_between
+      spritefile = @movie.file_server + spritefile
       count = images_count
 
       vtt = ["WEBVTT",""]
@@ -35,7 +36,6 @@ module Jwthumbs
       File.open(vtt_path, 'w+') do |f|
         f.write(vtt.join("\n")) 
       end
-     
     end
 
 
