@@ -13,7 +13,7 @@ module Jwthumbs
       w,h = whxy.first.split("x").map {|i| i.to_i}
       _x,_y = whxy.last.split("+").map {|i| i.to_i}
       thumb_rate = movie.seconds_between
-      if @movie.relative_paths
+      if @movie.relative_path
         spritefile = spritefile[1..-1] if spritefile[0] == "/" 
       else
         spritefile = @movie.file_server + spritefile
