@@ -19,9 +19,8 @@ module Jwthumbs
       @seconds_between = options[:seconds_between] ||= @duration.to_i/10
       @thumb_width = options[:thumb_width] ||= 100 
       @spritefile = options[:spritefile] ||= "#{File.basename(@file_path, File.extname(@file_path))}_sprite.jpg"
-      @vttfile_name = options[:vttfile_name] ||= "thumbs.vtt"
+      @vttfile = options[:vttfile_name] ||= "#{File.basename(@file_path, File.extname(@file_path))}_thumbs.vtt"
       @outdir = options[:thumb_outdir] ||= "output/thumbs_#{Time.now.to_i.to_s}"
-      @vttfile = File.basename(@file_path, File.extname(@file_path))+"_"+@vttfile_name  
       @file_server = options[:file_server] || ''
       @relative_path = options[:relative_path] || false
       @file_server = @file_server + "/" unless @file_server[-1] == '/'
