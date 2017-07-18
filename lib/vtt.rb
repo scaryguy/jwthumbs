@@ -52,7 +52,7 @@ module Jwthumbs
     end
 
     def get_time_str(clipstart)
-      Time.at(clipstart).gmtime.strftime('%H:%M:%S')
+      Time.at(clipstart).gmtime.strftime('%H:%M:%S.%L')
     end
 
     def get_grid_coordinates(image_index,gridsize,w,h)
