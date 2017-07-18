@@ -16,6 +16,6 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.after do
-	  FileUtils.rm_rf(Dir["output"])
-end
+	FileUtils.rm_rf(Dir["output"])
+  end
 end
